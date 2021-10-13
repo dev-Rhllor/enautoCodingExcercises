@@ -1,31 +1,30 @@
 # enautoCodingExcercises
 Based in CBT Nuggets ENAUTO Course. This is my approach to solve the same tasks explained in the course.
 
-IOS-XE: 
+## 1 IOS-XE
 
-NETCONF: 
+### 1.1 NETCONF: 
 
 Using the IOS-XE always on Sandbox 
-
-    Using NCCLIENT, send the a RPC to collect ietf-interface operation an configuration. 
-    Convert to Dict. 
-    Create two variables, and save op and config in different. 
-    Change the interface description sending a RPC. 
+ - Using NCCLIENT, send the a RPC to collect ietf-interface operation an configuration. 
+ - Convert to Dict. 
+ - Create two variables, and save op and config in different. 
+ - Change the interface description sending a RPC. 
 
 Using the CSR1000v always on Sandbox 
     Deploy a Netconf Telemetry Subscription. 
  
 
-NETMIKO: 
-    Connect to a device, run "ip interface brief" and parse it using NTC-Templates 
+### 1.2 NETMIKO: 
+1.2.a Using Python and NETMIKO: 
+- Connect to a device, run "ip interface brief" and parse it using NTC-Templates and Pandas DataFrame 
 
-Using Ansible and NETMIKO: 
+1.2.b Using Ansible and NETMIKO: 
+- Retrieve IOS Facts 
+- Send Show IP interface brief and print the result 
 
-    Retrieve IOS Facts 
-    Send Show IP interface brief and print the result 
 
-
-RESTCONF: 
+### RESTCONF: 
 
 Using the Sandbox IOSXE and Python Request. 
     Collect the capabilities of the device. 
