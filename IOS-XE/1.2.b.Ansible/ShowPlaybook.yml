@@ -1,0 +1,34 @@
+---
+
+- name: Playbook to execute a cli command and compare with ansible facts
+  gather_facts: false
+  hosts: iosxe
+  tasks:
+    - name: Execute "show interface brief" using ansible
+      ios_command:
+        commands: "show ip interface brief"
+      register: cli_result
+
+    - name: Display information  
+      debug:
+        msg: "{{cli_result.stdout_lines[0]}}"
+
+### For structurated (but limited) data ##        
+    - name: Gather ios Facts
+      ios_facts:
+      
+    - name: Display Net Interfaces structured
+      debug:
+        var: ansible_net_interfaces
+
+#### OTHER USEFUL VARS
+# ansible_net_config  - this gets the running config
+# ansible_net_model
+# ansible_net_serialnum
+# ansible_net_image
+# ansible_net_all_ipv4_addresses
+# ansible_net_all_ipv6_addresses
+# ansible_net_neighbors
+# ansible_net_interfaces
+# ansible_net_memfree_mb
+# ansible_net_memtotal_mb

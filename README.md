@@ -19,9 +19,12 @@ Using the CSR1000v always on Sandbox
 1.2.a Using Python and NETMIKO: 
 - Connect to a device, run "ip interface brief" and parse it using NTC-Templates and Pandas DataFrame 
 
-1.2.b Using Ansible and NETMIKO: 
-- Retrieve IOS Facts 
-- Send Show IP interface brief and print the result 
+1.2.b Using Ansible
+- Send Show IP interface brief and print the result. 
+- Use ansible ios_facts module to gather same information. 
+1.2.c Using Ansible and ntc-ansible
+- Send Show IP interface brief and print the result.
+
 
 
 ### RESTCONF: 
