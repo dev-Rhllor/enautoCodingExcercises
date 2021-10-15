@@ -1,34 +1,37 @@
 ---
 
-- name: Playbook to execute a cli command and compare with ansible facts
-  gather_facts: false
+- name: Gather the interface information from three different methods or modules
   hosts: iosxe
+  gather_facts: False
+  
   tasks:
-    - name: Execute "show interface brief" using ansible
+
+    - name: Gather "show interface brief" using ansible ios_command module
       ios_command:
         commands: "show ip interface brief"
       register: cli_result
 
-    - name: Display information  
+    - name: Display information as list of strings 
       debug:
         msg: "{{cli_result.stdout_lines[0]}}"
 
-### For structurated (but limited) data ##        
-    - name: Gather ios Facts
+    - name: Gather interface information using "ios facts" module 
       ios_facts:
       
-    - name: Display Net Interfaces structured
+    - name: Display "ansible_net_interface" var as structured data.
       debug:
-        var: ansible_net_interfaces
+        var: ansible_net_interfaces # There are several other vars in "ios facts" module
 
-#### OTHER USEFUL VARS
-# ansible_net_config  - this gets the running config
-# ansible_net_model
-# ansible_net_serialnum
-# ansible_net_image
-# ansible_net_all_ipv4_addresses
-# ansible_net_all_ipv6_addresses
-# ansible_net_neighbors
-# ansible_net_interfaces
-# ansible_net_memfree_mb
-# ansible_net_memtotal_mb
+    - name: Gather "show interface brief" using ntc-ansible module 
+      ntc_show_command: #All this parameters are needed by netmiko, can be added in the inventory file as vars
+        connection: ssh
+        platform: cisco_ios
+        host: "{{ansible_host}}" # var retrieved from inventory files
+        command: "show ip interface brief"
+        username: "{{ ansible_user }}"
+        password: "{{ ansible_ssh_pass }}"
+      register: result
+
+    - name: Display information as structured data.
+      debug: 
+        var: result
