@@ -2,16 +2,19 @@
 Based in CBT Nuggets ENAUTO Course. This is my approach to solve the same tasks explained in the course.
 
 ## 1 IOS-XE
-
-### 1.1 NETCONF: 
-
 Using the IOS-XE always on Sandbox 
- - Using NCCLIENT, send the a RPC to collect ietf-interface operation an configuration. 
- - Convert to Dict. 
- - Create two variables, and save op and config in different. 
- - Change the interface description sending a RPC. 
+### 1.1 NETCONF
+1.1.a Using Python and Scrapli module: 
+ - Send a RPC **get** to collect ietf-interfaces operational state
+ - Send a RPC **get-config** using subtree filtering to collect the interface description of the interface GigabitEthernet2.
+ - Send a RPC **config**  to change interface description.
+ - Send a RPC **get-config** using Xpath filtering to collect the interface description change.
+ - Send a RPC **config**  to Rollback the interface description.
 
-Using the CSR1000v always on Sandbox 
+1.1.b Using Python and ncclient module: 
+- Send a RPC **get-config** using subtree filtering to collect the interface description of the interface GigabitEthernet2.
+
+1.1.c Using the CSR1000v always on Sandbox 
     Deploy a Netconf Telemetry Subscription. 
  
 
@@ -25,8 +28,6 @@ Using the CSR1000v always on Sandbox
 - Gather "show interface brief" using ntc-ansible module (structured data)
 
 NOTE: ntc-ansible and ntc_show_command libraries have to be installed in the system.
-
-
 
 ### RESTCONF: 
 
