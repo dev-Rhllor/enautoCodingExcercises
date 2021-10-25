@@ -12,11 +12,11 @@ Using the IOS-XE always on Sandbox
  - Send a RPC **config**  to Rollback the interface description.
 
 1.1.b Using Python and ncclient module: 
-- Send a RPC **get-config** using subtree filtering to collect the interface description of the interface GigabitEthernet2.
+ - Send a RPC **get-config** using subtree filtering to collect the interface description of the interface GigabitEthernet2.
 
-1.1.c Using the CSR1000v always on Sandbox 
-    Deploy a Netconf Telemetry Subscription. 
- 
+1.1.c Using Python and ncclient module: 
+ - Deploy a Netconf Dynamic Telemetry Subscription. 
+  
 
 ### 1.2 NETMIKO: 
 1.2.a Using Python and NETMIKO: 
@@ -29,19 +29,18 @@ Using the IOS-XE always on Sandbox
 
 NOTE: ntc-ansible and ntc_show_command libraries have to be installed in the system.
 
-### RESTCONF: 
+### 1.3 RESTCONF: 
 
-Using the Sandbox IOSXE and Python Request. 
-    Collect the capabilities of the device. 
-    Collect statics routes using a Standard Yang Data Model 
-    Collect interface operation using Native Yang Data Model: 
-        Using Gigabit Ethernet 2.  
-        Statistics 
-    Using the standard Yang Data Model create a loopback interface. 
+1.3.a Using Python and the Request.
+ - Send a **get** request to retrieve capabilities of the device. 
+ - Send a **get** request to retrieve statics routes configuration using Native and Standard Yang Data Model 
+ - Send a **get** request to retrieve interface operation using Native Yang Data Model and using a name as filter. 
+ - Send a **post** request to create a loopback interface using using the standard Yang Data Model.
+ - Send a **delete** request to remove the loopback interface. 
 
-Using Ansible and RESTCONF: 
-    Print the interfaces Standard Yang Data Model 
-    Configure a loopback using Jinja Template 
+1.3.b Using Ansible and RESTCONF: 
+ - Print the interfaces Standard Yang Data Model 
+ - Configure a loopback using Jinja Template 
 
 DNA Center 
 
