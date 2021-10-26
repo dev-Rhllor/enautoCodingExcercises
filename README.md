@@ -23,9 +23,9 @@ Using the IOS-XE always on Sandbox
 - Connect to a device, run "ip interface brief" and parse it using NTC-Templates and Pandas DataFrame 
 
 1.2.b Using Ansible and NETMIKO and ntc-ansible
-- Gather "show interface brief" using ansible ios_command module
-- Gather interface information using "ios facts" module (structured data)
-- Gather "show interface brief" using ntc-ansible module (structured data)
+- Gather "show interface brief" using ansible **ios_command** module
+- Gather interface information using **ios facts** module (structured data)
+- Gather "show interface brief" using **ntc-ansible** module (structured data)
 
 NOTE: ntc-ansible and ntc_show_command libraries have to be installed in the system.
 
