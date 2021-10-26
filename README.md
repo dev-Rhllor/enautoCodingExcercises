@@ -35,12 +35,12 @@ NOTE: ntc-ansible and ntc_show_command libraries have to be installed in the sys
  - Send a **get** request to retrieve capabilities of the device. 
  - Send a **get** request to retrieve statics routes configuration using Native and Standard Yang Data Model 
  - Send a **get** request to retrieve interface operation using Native Yang Data Model and using a name as filter. 
- - Send a **post** request to create a loopback interface using using the standard Yang Data Model.
+ - Send a **post** request to create a loopback interface using using the Standard Yang Data Model.
  - Send a **delete** request to remove the loopback interface. 
 
 1.3.b Using Ansible and RESTCONF: 
  - Print the interfaces Standard Yang Data Model 
- - Configure a loopback using Jinja Template 
+ - send a **patch** request to create a loopback interface using Jinja Template 
 
 DNA Center 
 
