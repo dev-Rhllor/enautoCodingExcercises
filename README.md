@@ -51,10 +51,10 @@ Using the DNAC Sandbox.
  - Send a **get** request and retrieve the **Device List**. Filter the list using *parameters*.
  - Use the assurance API and send a **get** request to retrieve the **client-helath**
    - Going thruogh the dictionatary print the *health score* of the devices ordered by type. 
- - send a **get** to collect two *devices Id* and using the Command Runner API:
+ - Send a **get** to collect two *devices Id* and using the Command Runner API:
    - Send a **post** to generate a task of running a "show version" in the devices list.
-   - send a **get** to retrieve the *fileId* of the task.
-   - send a **get** to retrieve the *file* and print it.  
+   - Send a **get** to retrieve the *fileId* of the task.
+   - Send a **get** to retrieve the *file* and print it.  
 
 SDWAN 
 
