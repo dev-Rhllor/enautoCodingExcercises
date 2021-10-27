@@ -40,20 +40,21 @@ NOTE: ntc-ansible and ntc_show_command libraries have to be installed in the sys
 
 1.3.b Using Ansible and RESTCONF: 
  - Print the interfaces Standard Yang Data Model 
- - send a **patch** request to create a loopback interface using Jinja Template 
+ - Send a **patch** request to create a loopback interface using Jinja Template 
 
-DNA Center 
-
+## 2 DNA Center 
 Using the DNAC Sandbox. 
-    Get authenticated and retrieve: 
-        Sites 
-        Topologies 
-        Device  
-    Use the assurance API retrieve 
-        Wired Client 
-        Wireless Client 
-    Create a Python program to print for Wired and Wireless the amount of clients in in the scores values. 
-    Create a Python program to run a "show version" in at least two devices. 
+
+2.1 Using Python and request library:
+ - Send a **get** request and retrieve the **sites list** and print their names. 
+ - Send a **get** request and retrieve the **physical topology** and print it.
+ - Send a **get** request and retrieve the **Device List**. Filter the list using *parameters*.
+ - Use the assurance API and send a **get** request to retrieve the **client-helath**
+   - Going thruogh the dictionatary print the *health score* of the devices ordered by type. 
+ - send a **get** to collect two *devices Id* and using the Command Runner API:
+   - Send a **post** to generate a task of running a "show version" in the devices list.
+   - send a **get** to retrieve the *fileId* of the task.
+   - send a **get** to retrieve the *file* and print it.  
 
 SDWAN 
 
