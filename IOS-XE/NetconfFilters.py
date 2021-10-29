@@ -7,23 +7,25 @@ netconf_ietf_interfaces = """
     </interfaces>
 </filter>
 """
-netconf_ietf_interfaces_xpath="""            
+netconf_ietf_interfaces_xpath = """
 <get-config>
   <source>
     <running/>
   </source>
-  <filter xmlns:t='urn:ietf:params:xml:ns:yang:ietf-interfaces' type='xpath' select='/interfaces/interface[name="GigabitEthernet2"]'/>
+  <filter xmlns:t='urn:ietf:params:xml:ns:yang:ietf-interfaces'
+                type='xpath'
+                select='/interfaces/interface[name="GigabitEthernet2"]'/>
 </get-config>
 """
 
-netconf_ietf_interfaces_config="""
+netconf_ietf_interfaces_config = """
 <config>
   <interfaces xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces">
-	<interface>
-	  <name>{name}</name>
-	  <description>{description}</description>	  
-	  <enabled>true</enabled>	  
-	</interface>
+  <interface>
+    <name>{name}</name>
+    <description>{description}</description>
+    <enabled>true</enabled>
+  </interface>
   </interfaces>
 </config>
 """
