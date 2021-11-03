@@ -16,8 +16,8 @@ def main():
                'Accept': 'application/yang-data+json'}
 
     # Default request/https port is 443. Parameter is optional.
-    base_url = f"https://{sandbox_router['host']}:{sandbox_router['port']}"
-    resource = '/restconf/data/netconf-state/capabilities'
+    base_url = f"https://{sandbox_router['host']}:{sandbox_router['port']}/restconf/data"
+    resource = '/netconf-state/capabilities'
     response = requests.get(
         url=f'{base_url}{resource}',
         auth=(sandbox_router['auth_username'],
@@ -61,7 +61,9 @@ def main():
                                   sandbox_router['auth_password']),
                             headers=headers,
                             verify=False)
-    print(response.text)
+    interface_dict = json.loads(response.text)
+    print(interface_dict['ietf-interfaces:interface'])
+
     # Configure a loopback interfaces using a Standard yang model
     resource = '/ietf-interfaces:interfaces/'
     parameters = {'interface': [{'name': 'Loopback1',
