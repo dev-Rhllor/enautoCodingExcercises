@@ -1,5 +1,10 @@
-# enautoCodingExcercises
+# ENAUTO 300-435 Coding Excersices 
 Based in CBT Nuggets ENAUTO Course. This is my approach to solve the same tasks explained in the course.
+
+This is not meant to be a code to be used in production environment, this is just code to understand the concepts of the exam rather than creating a library for future use. 
+
+For production environments I strongly recommend to enter the official repo of [Cisco DevNet](https://github.com/CiscoDevNet) and look for a tested SDK. 
+
 
 ## 1 IOS-XE
 Using the IOS-XE always on Sandbox 
@@ -20,7 +25,10 @@ Using the IOS-XE always on Sandbox
 
 ### 1.2 NETMIKO: 
 1.2.a Using Python and NETMIKO: 
-- Connect to a device, run "ip interface brief" and parse it using NTC-Templates and Pandas DataFrame 
+- send a read only command using **send_command()** feature of NETMIKO and parse it using NTC-Templates and Pandas DataFrame. 
+- Send a write command using **send_command()** feature of NETMIKO.
+- Configure a loopback interface using **send_config_set**.
+- Configure a loopback interface using **send_config_from_file()**
 
 1.2.b Using Ansible and NETMIKO and ntc-ansible
 - Gather "show interface brief" using ansible **ios_command** module
@@ -56,14 +64,18 @@ Using the DNAC Sandbox.
    - Send a **get** to retrieve the *fileId* of the task.
    - Send a **get** to retrieve the *file* and print it.  
 
-SDWAN 
+## 3 SDWAN 
+Using Cisco SDWAN 19.2 Sandbox.
 
-Using Cisco SANDBOX SDWAN
-    Get Authenticated with the vManage API and conditional if authentication failed, response "login failed" and exit. If suceed print "loging succeed"  
-    Getting Device Inventory an converted to a Dictionary 
-    Query only vEdge devices 
-    Get vEdge using the specific Api Call  
-    Compare both outputs 2 vs 3 
+3.1 Create an Authethication function that:
+ - send a **post** with the *user* and *password* to retrieve the *jsession cookie* 
+ - send a **post** with the *jsession cookie* and retrieve the *X-XSRF-TOKEN*
+ - return a formated header with both parameters to be used in futures API-Calls
+
+3.2 Create a python program that authenthicate to the vManage and:
+ - send a **get** to retrieve the device inventory. Convert it to a Panda Dataframe frame for better visualizatin. 
+ - send a **get** to retrieve the device monitor. 
+ - send a **get** to retrieve the vEdge Inventory.  
     Getting Template Information for all devices. 
     Get templates Information with features 
 
@@ -78,6 +90,8 @@ Using Cisco Devnet reservable LAB
     Get certificate status summary 
     Get alarms of the devices. 
     Get tunnel statistics for a specific device. 
+
+
 
 MERAKI NETWORKING 
 
