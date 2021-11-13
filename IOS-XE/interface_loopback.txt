@@ -1,0 +1,3 @@
+interface loopback200
+ description Configured using Netmiko
+ ip address 2.2.2.2 255.255.255.255
