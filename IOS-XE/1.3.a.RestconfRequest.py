@@ -89,6 +89,23 @@ def main():
                             headers=headers,
                             verify=False)
     print(response.text)
+    # Update a loopback interfaces using a Standard yang model
+    resource = '/ietf-interfaces:interfaces/name=Loopback1'
+    parameters = {'ietf-ip:ipv4': {'address': [{'ip': '172.16.100.2',
+                                                'netmask': '255.255.255.0'}]}}
+    response = requests.post(url=f'{base_url}{resource}',
+                             auth=(sandbox_router['auth_username'],
+                                   sandbox_router['auth_password']),
+                             headers=headers,
+                             data=json.dumps(parameters),
+                             verify=False)
+    # Print after configuration a loopback using a Standard yang model
+    response = requests.get(url=f'{base_url}{resource}',
+                            auth=(sandbox_router['auth_username'],
+                                  sandbox_router['auth_password']),
+                            headers=headers,
+                            verify=False)
+    print(response.text)
     # Remove the loopback interfaces
     resource = '/ietf-interfaces:interfaces/interface=Loopback1'
     response = requests.delete(url=f'{base_url}{resource}',
