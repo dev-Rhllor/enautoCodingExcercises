@@ -64,7 +64,7 @@ def main():
     interface_dict = json.loads(response.text)
     print(interface_dict['ietf-interfaces:interface'])
 
-    # Configure a loopback interfaces using a Standard yang model
+    # Configure a loopback interfaces using a POST and the Standard yang model. Note that URI is the parent resource under which the new resource is created
     resource = '/ietf-interfaces:interfaces/'
     parameters = {'interface': [{'name': 'Loopback1',
                                  'description': 'My Loopback',
@@ -89,16 +89,40 @@ def main():
                             headers=headers,
                             verify=False)
     print(response.text)
-    # Update a loopback interfaces using a Standard yang model
-    resource = '/ietf-interfaces:interfaces/name=Loopback1'
-    parameters = {'ietf-ip:ipv4': {'address': [{'ip': '172.16.100.2',
-                                                'netmask': '255.255.255.0'}]}}
-    response = requests.post(url=f'{base_url}{resource}',
-                             auth=(sandbox_router['auth_username'],
-                                   sandbox_router['auth_password']),
-                             headers=headers,
-                             data=json.dumps(parameters),
-                             verify=False)
+    # Replace the loopback interface using PUT and the Standard yang model. (Note the resource changes and the URI in a PUT request is that of the newly created
+    # resource itself )
+    resource = '/ietf-interfaces:interfaces/interface=Loopback1'
+    parameters = {'interface': [{'name': 'Loopback1',
+                                 'type': 'iana-if-type:softwareLoopback',
+                                 'enabled': 'true',
+                                 'ietf-ip:ipv4': {'address': [{'ip': '172.16.100.2',
+                                                  'netmask': '255.255.255.0'}]}
+                                 }
+                                ]
+                  }
+    response = requests.put(url=f'{base_url}{resource}',
+                            auth=(sandbox_router['auth_username'],
+                                  sandbox_router['auth_password']),
+                            headers=headers,
+                            data=json.dumps(parameters),
+                            verify=False)
+    # Print after configuration a loopback using a Standard yang model
+    response = requests.get(url=f'{base_url}{resource}',
+                            auth=(sandbox_router['auth_username'],
+                                  sandbox_router['auth_password']),
+                            headers=headers,
+                            verify=False)
+    print(response.text)
+    # Update the loopback interface using PATH and the Standard yang model.
+    resource = '/ietf-interfaces:interfaces/interface=Loopback1'
+    parameters = {'interface': [{'name': 'Loopback1',
+                                 'description': 'Description updated'}]}
+    response = requests.patch(url=f'{base_url}{resource}',
+                              auth=(sandbox_router['auth_username'],
+                                    sandbox_router['auth_password']),
+                              headers=headers,
+                              data=json.dumps(parameters),
+                              verify=False)
     # Print after configuration a loopback using a Standard yang model
     response = requests.get(url=f'{base_url}{resource}',
                             auth=(sandbox_router['auth_username'],
