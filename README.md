@@ -70,16 +70,18 @@ Using the DNAC Sandbox.
 ## 3 SDWAN 
 Using Cisco SDWAN 19.2 Sandbox.
 
-3.1 Create an Authethication function that:
+3.1 Create an Authenthication function that:
  - send a **post** with the *user* and *password* to retrieve the *jsession cookie* 
  - send a **post** with the *jsession cookie* and retrieve the *X-XSRF-TOKEN*
  - return a formated header with both parameters to be used in futures API-Calls
 
 3.2 Create a python program that authenthicate to the vManage and:
- - send a **get** to retrieve the device inventory. Convert it to a Panda Dataframe frame for better visualizatin. 
- - send a **get** to retrieve the device monitor. 
- - send a **get** to retrieve the vEdge Inventory.  
-    Getting Template Information for all devices. 
+ - send a **get** to retrieve the device inventory. Convert it to a Panda Dataframe frame for better visualization.
+ - send a **get** to retrieve the device monitor.  
+ - send a **get** to retrieve the vEdge Inventory.
+ - send a **get** to retrieve statistics and filter by the first device and *mpls* as local-color and *public-internet* as remote-color.
+  send a **get** to template information for all devices.
+
     Get templates Information with features 
 
 Using Cisco Devnet reservable LAB 
