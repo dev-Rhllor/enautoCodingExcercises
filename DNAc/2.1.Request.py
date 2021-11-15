@@ -19,7 +19,7 @@ def main():
     headers = {'Content-Type': 'application/json',
                'Accept': 'application/json',
                'X-Auth-Token': token}
-    # get site list (getSite)
+    # Get site list (getSite)
     sitelist_resource = "/dna/intent/api/v1/site"
     response = requests.get(url=f'{base_url}{sitelist_resource}',
                             headers=headers
@@ -27,9 +27,11 @@ def main():
     site_count = len(response['response'])
     print(f'The amount of sites in {base_url} is \
           {site_count} and have the following names:')
+    print('             ID                      | SITE ')
+    print('-------------------------------------+----------')
     for site in response['response']:
-        print(site['name'])
-    # get physical topology (getPhysicalTopology)
+        print(f'{site["id"]} | {site["name"]} ')
+    # Get physical topology (getPhysicalTopology)
     topology_resource = "/dna/intent/api/v1/topology/physical-topology"
     response = requests.get(url=f'{base_url}{topology_resource}',
                             headers=headers
@@ -43,6 +45,14 @@ def main():
                             ).json()
     print('Device List')
     pprint(response['response'])
+    # Getting de Device details of the first device (getDeviceDetail).
+    first_device_mac = response['response'][0]['macAddress']
+    device_details_resource = "/dna/intent/api/v1/device-detail"
+    response = requests.get(url=f'{base_url}{device_details_resource}?searchBy={first_device_mac}&identifier=macAddress',
+                            headers=headers
+                            ).json()
+    print(f'Details of device with MAC Address {first_device_mac}')
+    pprint(response['response'])
     # Filterin Device List by softwareType and name spine* (note ".*")
     query_parameters = {'softwareType': 'IOS-XE',
                         'hostname': 'spine.*'}
@@ -55,7 +65,7 @@ def main():
         print(f'{key} = {query_parameters[key]}')
     pprint(response['response'])
 
-    # using the assurance API to get a list of clients (getOverallClientHealth)
+    # Using the assurance API to get a list of clients (getOverallClientHealth)
     client_list_resource = "/dna/intent/api/v1/client-health"
     response = requests.get(url=f'{base_url}{client_list_resource}',
                             headers=headers

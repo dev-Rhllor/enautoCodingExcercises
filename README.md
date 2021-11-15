@@ -56,9 +56,10 @@ NOTE: ntc-ansible and ntc_show_command libraries have to be installed in the sys
 Using the DNAC Sandbox. 
 
 2.1 Using Python and request library:
- - Send a **get** request and retrieve the **sites list** and print their names. 
+ - Send a **get** request and retrieve the **sites list** and print their names and IDs. 
  - Send a **get** request and retrieve the **physical topology** and print it.
  - Send a **get** request and retrieve the **Device List**. Filter the list using *parameters*.
+ - Send a **get** request and retrieve the **Device Detail** from one of the devices.
  - Use the assurance API and send a **get** request to retrieve the **client-helath**
    - Going thruogh the dictionatary print the *health score* of the devices ordered by type. 
  - Send a **get** to collect two *devices Id* and using the Command Runner API:
