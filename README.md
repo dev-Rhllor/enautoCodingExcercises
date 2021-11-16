@@ -80,21 +80,15 @@ Using Cisco SDWAN 19.2 Sandbox.
  - send a **get** to retrieve the device monitor.  
  - send a **get** to retrieve the vEdge Inventory.
  - send a **get** to retrieve statistics and filter by the first device and *mpls* as local-color and *public-internet* as remote-color.
-  send a **get** to template information for all devices.
+ - send a **get** to template information for all devices.
+ - send a **post** to create a user in the netadmin group. (using Admin API)
+ - send a **put** to modify a user password  
 
-    Get templates Information with features 
-
-Using Cisco Devnet reservable LAB 
-    Create a user in the netadmin group. (using Admin API)  
-    Change password. 
+    
     Get a list of devices and validate the status of certificates. 
     Get a the root certificate. 
-    Create a Template using the Template information.  
-    Template type should be "aaa,  system-vedge, vpn-vsmart" 
-    Mock the Push template to one device. (not actually push it).a  
     Get certificate status summary 
     Get alarms of the devices. 
-    Get tunnel statistics for a specific device. 
 
 
 

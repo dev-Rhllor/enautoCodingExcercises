@@ -59,6 +59,66 @@ def main():
     device_statistic_df = pd.DataFrame(device_statistic)
     print(device_statistic_df)
 
+    # Retrieve list of templates of all devices
+    device_resource = '/dataservice/template/feature'
+    response = requests.get(url=f'{base_url}{device_resource}',
+                            headers=headers,
+                            verify=False)
+    response_dict = json.loads(response.text)
+    template_dict = response_dict['data']
+    template_df = pd.DataFrame(template_dict)
+    print(template_df)
+
+    # List all admin users
+    device_resource = '/dataservice/admin/user'
+    response = requests.get(url=f'{base_url}{device_resource}',
+                            headers=headers,
+                            verify=False)
+    response_dict = json.loads(response.text)
+    users_dict = response_dict['data']
+    users_df = pd.DataFrame(users_dict)
+    print(users_df)
+
+    # Create an Admin in the NetAdmin Group
+    device_resource = '/dataservice/admin/user'
+    payload = {'group': ['netadmin'],
+               'description': 'User Created With API',
+               'userName': 'demouser',
+               'password': 'password',
+               'locale': 'en_US',
+               'resGroupName': 'global'}
+    response = requests.post(url=f'{base_url}{device_resource}',
+                             headers=headers,
+                             data=json.dumps(payload),
+                             verify=False)
+    if response.status_code == 200:
+        print(f'User {payload["userName"]} created')
+    else:
+        print(f'User {payload["userName"]} NOT created with code {response.status_code}')
+
+    # List the users again
+    device_resource = '/dataservice/admin/user'
+    response = requests.get(url=f'{base_url}{device_resource}',
+                            headers=headers,
+                            verify=False)
+    response_dict = json.loads(response.text)
+    users_dict = response_dict['data']
+    users_df = pd.DataFrame(users_dict)
+    print(users_df)
+
+    # Change the password of the Admin created
+    device_resource = '/dataservice/admin/user/password/demouser'
+    payload = {'userName': 'demouser',
+               'password': 'demopassword'}
+    response = requests.put(url=f'{base_url}{device_resource}',
+                            headers=headers,
+                            data=json.dumps(payload),
+                            verify=False)
+    if response.status_code == 200:
+        print(f'User password {payload["userName"]} changed')
+    else:
+        print(f'User password {payload["userName"]} NOT changed with code {response.status_code}')
+
 
 if __name__ == '__main__':
     main()
