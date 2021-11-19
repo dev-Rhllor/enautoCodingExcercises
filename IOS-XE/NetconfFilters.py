@@ -7,14 +7,16 @@ netconf_ietf_interfaces = """
     </interfaces>
 </filter>
 """
+
+# This following filter is tricky, if the filter xmlns is not set propperly it returns all namespaces in the module.
 netconf_ietf_interfaces_xpath = """
 <get-config>
   <source>
     <running/>
   </source>
-  <filter xmlns:t='urn:ietf:params:xml:ns:yang:ietf-interfaces'
+  <filter xmlns:xyz='urn:ietf:params:xml:ns:yang:ietf-interfaces'
                 type='xpath'
-                select='/interfaces/interface[name="GigabitEthernet2"]'/>
+                select='/xyz:interfaces/interface[name="GigabitEthernet2"]'/>
 </get-config>
 """
 
