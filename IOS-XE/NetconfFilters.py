@@ -40,3 +40,9 @@ netconf_ietf_interfaces_status = """
   </interfaces-state>
 </filter>
 """
+netconf_native_memory_statistics = """
+ <filter>
+  <memory-statistics xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-memory-oper">
+  </memory-statistic>
+</filter>
+"""
