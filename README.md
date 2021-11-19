@@ -13,8 +13,9 @@ Using the IOS-XE always on Sandbox
  - Send a RPC **get** to collect ietf-interfaces operational state
  - Send a RPC **get-config** using subtree filtering to collect the interface description of the interface GigabitEthernet2.
  - Send a RPC **config**  to change interface description.
- - Send a RPC **get-config** using Xpath filtering to collect the interface description change.
+ - Send a RPC **get-config** using Xpath filtering to collect the interface description change filtered by namespace
  - Send a RPC **config**  to Rollback the interface description.
+ - Send a RPC **get** to collect operational data in a native module.
 
 1.1.b Using Python and ncclient module: 
  - Send a RPC **get-config** using subtree filtering to collect the interface description of the interface GigabitEthernet2.

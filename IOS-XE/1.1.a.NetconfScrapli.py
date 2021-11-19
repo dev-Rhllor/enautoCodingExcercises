@@ -3,7 +3,8 @@ from NetconfFilters import (
     netconf_ietf_interfaces_status,
     netconf_ietf_interfaces,
     netconf_ietf_interfaces_xpath,
-    netconf_ietf_interfaces_config
+    netconf_ietf_interfaces_config,
+    netconf_native_memory_statistics
 )
 import xmltodict
 import xml.dom.minidom
@@ -56,6 +57,12 @@ def main():
                                                                  description=interface_description)
         change_reply = connection.edit_config(config=interface_config, target='running')
         print(f'Rollback: {change_reply}')
+
+        # Using Subtree Filter and sending a 'get' in a oper-status only module.
+        native_memory_statistics = connection.get(filter_=netconf_native_memory_statistics)
+        native_memory_statistics_xmldom = xml.dom.minidom.parseString(str(native_memory_statistics.result))
+        native_memory_statistics_dict = xmltodict.parse(native_memory_statistics_xmldom.toxml())
+        print(native_memory_statistics_dict)
         connection.close()
 
 
