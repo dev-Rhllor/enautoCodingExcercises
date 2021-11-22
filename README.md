@@ -1,7 +1,7 @@
 # ENAUTO 300-435 Coding Excersices 
-Based in CBT Nuggets ENAUTO Course. This is my approach to solve the same tasks explained in the course.
+Based in CBT Nuggets ENAUTO Course. This is my approach to solve the several tasks explained in the course. The one left are due tha lack of resaurces to simlate them.
 
-This is not meant to be a code to be used in production environment, this is just code to understand the concepts of the exam rather than creating a library for future use. 
+This is not ment to be a code to be used in production environment, this is just code to understand the concepts of the exam rather than creating a library for future use. 
 
 For production environments I strongly recommend to enter the official repo of [Cisco DevNet](https://github.com/CiscoDevNet) and look for a tested SDK. 
 
@@ -69,7 +69,7 @@ Using the DNAC Sandbox.
    - Send a **get** to retrieve the *file* and print it.  
 
 ## 3 SDWAN 
-Using Cisco SDWAN 19.2 Sandbox.
+Using Cisco SDWAN 19.2.2 Sandbox.
 
 3.1 Create an Authenthication function that:
  - send a **post** with the *user* and *password* to retrieve the *jsession cookie* 
@@ -83,22 +83,18 @@ Using Cisco SDWAN 19.2 Sandbox.
  - send a **get** to retrieve statistics and filter by the first device and *mpls* as local-color and *public-internet* as remote-color.
  - send a **get** to template information for all devices.
  - send a **post** to create a user in the netadmin group. (using Admin API)
- - send a **put** to modify a user password  
+ - send a **put** to modify a user password.
+ - send a **delete** to remove the newly created user.
+ - send a **get** to retrieve the alarms of the devices.
+ - send a **get** to retrieve certificate summary of all devices.
+ - send a **get** to retrieve the root certificate.
 
-    
-    Get a list of devices and validate the status of certificates. 
-    Get a the root certificate. 
-    Get certificate status summary 
-    Get alarms of the devices. 
-
-
-
-MERAKI NETWORKING 
-
+## 4 MERAKI NETWORKING 
 Using the always on DEVNET sandbox 
-    Get a list of organizations and get Devnet Sanbox ID 
-    Get list of networks in Devnet Sandbox Org and collect id of DNSMB3 
-    Get a list of devices inside the DNSMB3 
+    
+- send a **get** to retrieve the list of organizations and collect the Devnet Sandbox *id*
+- send a **get** to retrieve the list of networks in Devnet Sandbox Org and collect *id* of *DevNet Sandbox ALWAYS ON*
+- send a **get** a list of devives in *DevNet Sandbox ALWAYS ON* and collect the serial of a wireless device.
     Choose an SSID and get a list of devices connected. 
     Create a new network inside the org. 
  
