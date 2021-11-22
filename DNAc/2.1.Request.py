@@ -9,16 +9,19 @@ def main():
     token_resource = "/dna/system/api/v1/auth/token"
     user = "devnetuser"
     password = "Cisco123!"
+
     # For retrieving the token a "post" with user and pass is needed.
     response = requests.post(url=f'{base_url}{token_resource}',
                              auth=HTTPBasicAuth(user, password)
                              ).json()
     token = response['Token']
     print(token)
+
     # Create headers with token for futere request
     headers = {'Content-Type': 'application/json',
                'Accept': 'application/json',
                'X-Auth-Token': token}
+
     # Get site list (getSite)
     sitelist_resource = "/dna/intent/api/v1/site"
     response = requests.get(url=f'{base_url}{sitelist_resource}',
@@ -31,6 +34,7 @@ def main():
     print('-------------------------------------+----------')
     for site in response['response']:
         print(f'{site["id"]} | {site["name"]} ')
+
     # Get physical topology (getPhysicalTopology)
     topology_resource = "/dna/intent/api/v1/topology/physical-topology"
     response = requests.get(url=f'{base_url}{topology_resource}',
@@ -38,6 +42,7 @@ def main():
                             ).json()
     print('Physical Topology')
     pprint(response['response'])
+
     # Get Device List (getDeviceList1)
     device_list_resource = "/dna/intent/api/v1/network-device"
     response = requests.get(url=f'{base_url}{device_list_resource}',
@@ -45,6 +50,7 @@ def main():
                             ).json()
     print('Device List')
     pprint(response['response'])
+
     # Getting de Device details of the first device (getDeviceDetail).
     first_device_mac = response['response'][0]['macAddress']
     device_details_resource = "/dna/intent/api/v1/device-detail"
@@ -53,6 +59,7 @@ def main():
                             ).json()
     print(f'Details of device with MAC Address {first_device_mac}')
     pprint(response['response'])
+
     # Filterin Device List by softwareType and name spine* (note ".*")
     query_parameters = {'softwareType': 'IOS-XE',
                         'hostname': 'spine.*'}
@@ -87,6 +94,7 @@ def main():
                                 with score {score_category}')
             except KeyError:
                 pass
+
     # Run show ver in two devices. Gettin two devices ID
     query_parameters = {'softwareType': 'IOS-XE',
                         'role': 'ACCESS'}
@@ -97,6 +105,7 @@ def main():
     device_list = []
     for device in response['response']:
         device_list.append(device['id'])
+
     # Running a "show version" cli command
     # (runRead_onlyCommandsOnDevicesToGetTheirReal_timeConfiguration)
     ro_resource = '/dna/intent/api/v1/network-device-poller/cli/read-request'
@@ -111,6 +120,7 @@ def main():
                              data=json.dumps(payload),
                              headers=headers).json()
     taskurl = response['response']['url']
+
     # Using the task id, retrieve the file id associated with the response
     response = requests.get(url=f'{base_url}{taskurl}',
                             headers=headers).json()

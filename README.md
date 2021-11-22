@@ -92,21 +92,9 @@ Using Cisco SDWAN 19.2.2 Sandbox.
 ## 4 MERAKI NETWORKING 
 Using the always on DEVNET sandbox 
     
-- send a **get** to retrieve the list of organizations and collect the Devnet Sandbox *id*
-- send a **get** to retrieve the list of networks in Devnet Sandbox Org and collect *id* of *DevNet Sandbox ALWAYS ON*
-- send a **get** a list of devives in *DevNet Sandbox ALWAYS ON* and collect the serial of a wireless device.
-    Choose an SSID and get a list of devices connected. 
-    Create a new network inside the org. 
- 
-
-Meraki Camara: 
-Using the always on DEVNET sandbox 
-    Install a MQTT broker in UBUNTU. 
-    Asociate a test camara to the MQTT Broker 
-    Check real time feed: 
-        Light 
-        Raw_data 
-    Using the REST API retrieve 
-        Overview Analytics 
-        Live Analytics 
-        Recent Analytics 
+- send a **get** to retrieve the list of organizations and collect the *Devnet Sandbox* organization *id*.
+- send a **get** to retrieve the list of networks in *Devnet Sandbox* organization and collect *id* of *DevNet Sandbox ALWAYS ON* network.
+- send a **get** to list of devives in *DevNet Sandbox ALWAYS ON* network and collect the *serial number* of a wireless device.
+- send a **get** to retrieve the wireless radio setting of a wireless device.
+- send a **get** to retrieve the *SSID* of the *DevNet Sandbox ALWAYS ON*'* network.
+- send a **get** to retrieve wireless clients attached to the any device in the *DevNet SandBox ALWAYS ON*.
