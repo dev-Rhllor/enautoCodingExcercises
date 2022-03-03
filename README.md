@@ -36,7 +36,7 @@ Using the IOS-XE always on Sandbox
 - Gather interface information using **ios facts** module (structured data)
 - Gather "show interface brief" using **ntc-ansible** module (structured data)
 
-NOTE: ntc-ansible and ntc_show_command libraries have to be installed in the system.
+NOTE: The ntc-ansible module has to be installed in the system. Follow the [official repo](https://github.com/networktocode/ntc-ansible) for instructions. 
 
 ### 1.3 RESTCONF: 
 
