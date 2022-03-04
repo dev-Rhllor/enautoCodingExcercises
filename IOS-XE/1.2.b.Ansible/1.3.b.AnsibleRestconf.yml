@@ -1,6 +1,6 @@
 ---
 
-- name: Using request and ansible.
+- name: Using RESTCONF and ansible.
   connection: local
   hosts: iosxe
   gather_facts: False
