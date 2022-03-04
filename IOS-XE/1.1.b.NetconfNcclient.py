@@ -15,7 +15,7 @@ def main():
         interfaces_ietf = m.get_config(source="running",
                                        filter=netconf_ietf_interfaces)
         interfaces_ietf_dict = xmltodict.parse(interfaces_ietf.data_xml)
-        first_interface_name = interfaces_ietf_dict['data']['interfaces']['interface'][0]['name']
+        first_interface_name = interfaces_ietf_dict['data']['interfaces']['interface']['name']
         print(f'First interface name is {first_interface_name}')
 
 
