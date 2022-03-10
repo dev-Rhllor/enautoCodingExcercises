@@ -5,6 +5,18 @@ This is not ment to be a code to be used in production environment, this is just
 
 For production environments I strongly recommend to enter the official repo of [Cisco DevNet](https://github.com/CiscoDevNet) and look for a tested SDK. 
 
+## Requirements 
+
+Mosts of the requirements can be installed using:
+```
+pip install requirement.txt
+``` 
+For **ansible** follow the [official documentation](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#)
+
+For **ntc-ansible** follow the [official repo](https://github.com/networktocode/ntc-ansible) for instructions. 
+
+
+
 
 ## 1 IOS-XE
 Using the IOS-XE always on Sandbox 
@@ -36,7 +48,7 @@ Using the IOS-XE always on Sandbox
 - Gather interface information using **ios facts** module (structured data)
 - Gather "show interface brief" using **ntc-ansible** module (structured data)
 
-NOTE: The ntc-ansible module has to be installed in the system. Follow the [official repo](https://github.com/networktocode/ntc-ansible) for instructions. 
+NOTE: The ntc-ansible module has to be installed in the system. 
 
 ### 1.3 RESTCONF: 
 
@@ -98,3 +110,4 @@ Using the always on DEVNET sandbox
 - send a **get** to retrieve the wireless radio setting of a wireless device.
 - send a **get** to retrieve the *SSID* of the *DevNet Sandbox ALWAYS ON*'* network.
 - send a **get** to retrieve wireless clients attached to the any device in the *DevNet SandBox ALWAYS ON*.
+
