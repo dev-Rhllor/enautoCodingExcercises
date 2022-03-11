@@ -1,11 +1,20 @@
+############ IOSXE Requires a default Namespace in the Config tag ################
+
+
 netconf_ietf_interfaces = """
-<filter>
-    <interfaces xmlns='urn:ietf:params:xml:ns:yang:ietf-interfaces'>
+  <interfaces xmlns='urn:ietf:params:xml:ns:yang:ietf-interfaces'>
         <interface>
             <name>GigabitEthernet2</name>
         </interface>
-    </interfaces>
-</filter>
+  </interfaces>
+"""
+
+netconf_ietf_interfaces_status = """
+  <interfaces-state xmlns='urn:ietf:params:xml:ns:yang:ietf-interfaces'>
+    <interface>
+      <name>GigabitEthernet2</name>
+    </interface>
+  </interfaces-state>
 """
 
 # This following filter is tricky, if the filter xmlns is not set propperly it returns all namespaces in the module.
@@ -21,28 +30,18 @@ netconf_ietf_interfaces_xpath = """
 """
 
 netconf_ietf_interfaces_config = """
-<config>
-  <interfaces xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces">
-  <interface>
-    <name>{name}</name>
-    <description>{description}</description>
-    <enabled>true</enabled>
-  </interface>
+<config xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <interfaces xmlns='urn:ietf:params:xml:ns:yang:ietf-interfaces'>
+    <interface>
+      <name>{name}</name>
+      <description>{description}</description>
+      <enabled>true</enabled>
+    </interface>
   </interfaces>
 </config>
 """
-netconf_ietf_interfaces_status = """
- <filter>
-  <interfaces-state xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces">
-    <interface>
-      <name>GigabitEthernet2</name>
-    </interface>
-  </interfaces-state>
-</filter>
-"""
+
 netconf_native_memory_statistics = """
- <filter>
-  <memory-statistics xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-memory-oper">
-  </memory-statistic>
-</filter>
+  <memory-statistics xmlns='http://cisco.com/ns/yang/Cisco-IOS-XE-memory-oper'>
+  </memory-statistics>
 """

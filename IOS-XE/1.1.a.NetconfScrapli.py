@@ -8,7 +8,11 @@ from NetconfFilters import (
 )
 import xmltodict
 import xml.dom.minidom
+import logging
 
+logging.basicConfig(
+       level=logging.DEBUG,
+   )
 
 def main():
     sandbox_router = {
@@ -23,6 +27,13 @@ def main():
     with NetconfDriver(**sandbox_router) as connection:
         connection.open()
 
+        # Using Subtree Filter and sending a 'get-config'
+        interfaces_ietf = connection.get_config('running', filter_=netconf_ietf_interfaces)
+        interfaces_ietf_xmldom = xml.dom.minidom.parseString(str(interfaces_ietf.result))
+        interfaces_ietf_dict = xmltodict.parse(interfaces_ietf_xmldom.toxml())
+        interface_description = interfaces_ietf_dict['rpc-reply']['data']['interfaces']['interface']['description']
+        print(f'Interface description for GigabitEthernet2 is {interface_description}')
+
         # For getting realtime oper-status from interface. ITS DONE USING GET AND NO DATASTORE NEEDED.
         interfaces_ietf_status = connection.get(netconf_ietf_interfaces_status)
         interfaces_ietf_status_xmldom = xml.dom.minidom.parseString(
@@ -31,16 +42,9 @@ def main():
         interfaces_ietf_status = interfaces_ietf_status_dict['rpc-reply']['data']['interfaces-state']['interface']['oper-status']
         print(f'Interface operation status for GigabitEthernet2 is {interfaces_ietf_status}')
 
-        # Using Subtree Filter and sending a 'get-config'
-        interfaces_ietf = connection.get_config('running', filter_=netconf_ietf_interfaces)
-        interfaces_ietf_xmldom = xml.dom.minidom.parseString(str(interfaces_ietf.result))
-        interfaces_ietf_dict = xmltodict.parse(interfaces_ietf_xmldom.toxml())
-        interface_description = interfaces_ietf_dict['rpc-reply']['data']['interfaces']['interface']['description']
-        print(f'Interface description for GigabitEthernet2 is {interface_description}')
-
-        # changing description using netconf
+        # Changing description using netconf
         interface_config = netconf_ietf_interfaces_config.format(name='GigabitEthernet2',
-                                                                 description='Changed using Netconf')
+                                                                 description='Changed using ScrappliNetconf')
         change_reply = connection.edit_config(config=interface_config, target='running')
         print(change_reply)
 
