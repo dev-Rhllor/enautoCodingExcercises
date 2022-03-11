@@ -1,9 +1,19 @@
 netconf_ietf_interfaces = """
-<filter>
+<filter xmlns='urn:ietf:params:xml:ns:netconf:base:1.0'>
     <interfaces xmlns='urn:ietf:params:xml:ns:yang:ietf-interfaces'>
-        <interface>
-            <name>GigabitEthernet2</name>
-        </interface>
+      <interface>
+        <name>GigabitEthernet2</name>
+      </interface>
+    </interfaces>
+</filter>
+"""
+
+netconf_ietf_interfaces_scrapli = """
+<filter>
+    <interfaces xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces">
+      <interface>
+        <name>GigabitEthernet2</name>
+      </interface>
     </interfaces>
 </filter>
 """
@@ -32,7 +42,7 @@ netconf_ietf_interfaces_config = """
 </config>
 """
 netconf_ietf_interfaces_status = """
- <filter>
+<filter>
   <interfaces-state xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces">
     <interface>
       <name>GigabitEthernet2</name>
@@ -41,8 +51,8 @@ netconf_ietf_interfaces_status = """
 </filter>
 """
 netconf_native_memory_statistics = """
- <filter>
+<filter xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
   <memory-statistics xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-memory-oper">
-  </memory-statistic>
+  </memory-statistics>
 </filter>
 """

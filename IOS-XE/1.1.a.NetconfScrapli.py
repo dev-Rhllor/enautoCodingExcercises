@@ -1,7 +1,7 @@
 from scrapli_netconf.driver import NetconfDriver
 from NetconfFilters import (
     netconf_ietf_interfaces_status,
-    netconf_ietf_interfaces,
+    netconf_ietf_interfaces_scrapli,
     netconf_ietf_interfaces_xpath,
     netconf_ietf_interfaces_config,
     netconf_native_memory_statistics
@@ -32,7 +32,7 @@ def main():
         print(f'Interface operation status for GigabitEthernet2 is {interfaces_ietf_status}')
 
         # Using Subtree Filter and sending a 'get-config'
-        interfaces_ietf = connection.get_config('running', filter_=netconf_ietf_interfaces)
+        interfaces_ietf = connection.get_config('running', filter_=netconf_ietf_interfaces_scrapli)
         interfaces_ietf_xmldom = xml.dom.minidom.parseString(str(interfaces_ietf.result))
         interfaces_ietf_dict = xmltodict.parse(interfaces_ietf_xmldom.toxml())
         interface_description = interfaces_ietf_dict['rpc-reply']['data']['interfaces']['interface']['description']
