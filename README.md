@@ -16,21 +16,19 @@ For **ansible** follow the [official documentation](https://docs.ansible.com/ans
 For **ntc-ansible** follow the [official repo](https://github.com/networktocode/ntc-ansible) for instructions. 
 
 
-
-
 ## 1 IOS-XE
 Using the IOS-XE always on Sandbox 
 ### 1.1 NETCONF
-1.1.a Using Python and Scrapli module: 
- - Send a RPC **get** to collect ietf-interfaces operational state
- - Send a RPC **get-config** using subtree filtering to collect the interface description of the interface GigabitEthernet2.
- - Send a RPC **config**  to change interface description.
- - Send a RPC **get-config** using Xpath filtering to collect the interface description change filtered by namespace
- - Send a RPC **config**  to Rollback the interface description.
- - Send a RPC **get** to collect operational data in a native module.
-
-1.1.b Using Python and ncclient module: 
- - Send a RPC **get-config** using subtree filtering to collect the interface description of the interface GigabitEthernet2.
+With Python, Scrapli (1.1.a) and Nclient (1.1.b) module:
+- Using subtree filters:
+   - Send a **get-config** RPC to retrieve the interface config using the ieft module. 
+   - Send a **get** RPC to collect ietf-interfaces operational state
+   - Send a **get** RPC to retrieve oper-status of a Native module.
+ - Using XPATH filters:
+   - Send a **get-config** to retrieve the interfaces configuration returning all namespaces that match with the filter.
+   - Send a **get**  RPC to retrieve oper-status of an interface and filter only the OpenConfig namespace.
+ - Send a **config** RPC to change the description sending the GigabitEthernet2 using a template.
+ - Send a **custom craft** RPC to save the configuration of the device.
 
 1.1.c Using Python and ncclient module: 
  - Deploy a Netconf Dynamic Telemetry Subscription. 
