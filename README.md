@@ -1,9 +1,9 @@
 # ENAUTO 300-435 Coding Excersices 
-Based in CBT Nuggets ENAUTO Course. This is my approach to solve the several tasks explained in the course. The one left are due tha lack of resaurces to simlate them.
+Based on CBT Nuggets ENAUTO Course. These are my approach to solving the several tasks explained in the course. The ones left are due to the lack of resources to simulate them.
 
-This is not ment to be a code to be used in production environment, this is just code to understand the concepts of the exam rather than creating a library for future use. 
+The goal of this repo is to understand the exam concepts rather than create a library for future use. 
 
-For production environments I strongly recommend to enter the official repo of [Cisco DevNet](https://github.com/CiscoDevNet) and look for a tested SDK. 
+For production environments please refer to [Cisco DevNet](https://github.com/CiscoDevNet) and look for a tested SDKs.
 
 ## Requirements 
 
@@ -41,7 +41,7 @@ With Python, Scrapli (1.1.a) and Nclient (1.1.b) module:
 - Configure a loopback interface using **send_config_set**.
 - Configure a loopback interface using **send_config_from_file()**
 
-1.2.b Using Ansible and NETMIKO and ntc-ansible
+1.2.b Using Ansible, NETMIKO and ntc-ansible
 - Gather "show interface brief" using ansible **ios_command** module
 - Gather interface information using **ios facts** module (structured data)
 - Gather "show interface brief" using **ntc-ansible** module (structured data)
@@ -50,7 +50,7 @@ NOTE: The ntc-ansible module has to be installed in the system.
 
 ### 1.3 RESTCONF: 
 
-1.3.a Using Python and the Request.
+1.3.a Using Python and the Request module.
  - Send a **get** request to retrieve capabilities of the device. 
  - Send a **get** request to retrieve statics routes configuration using Native and Standard Yang Data Model 
  - Send a **get** request to retrieve interface operation using Native Yang Data Model and using a name as filter. 
