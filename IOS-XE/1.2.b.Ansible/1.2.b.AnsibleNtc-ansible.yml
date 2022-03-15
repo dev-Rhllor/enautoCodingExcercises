@@ -1,12 +1,14 @@
 ---
 
-- name: Gather the interface information from three different methods or modules
+- name: Gather the interface information using the Ansible Network Collection for Cisco IOS devices. 
   hosts: iosxe
   gather_facts: False
+  tags:
+    - network_collection
   
   tasks:
 
-    - name: Gather "show interface brief" using ansible ios_command module
+    - name: Gather "show ip interface brief" using ansible ios_command module
       ios_command:
         commands: "show ip interface brief"
       register: cli_result
@@ -21,6 +23,14 @@
     - name: Display "ansible_net_interface" var as structured data.
       debug:
         var: ansible_net_interfaces # There are several other vars in "ios facts" module
+
+- name: Gather the interface information using the Multi-vendor Ansible Modules for Network Automation (ntc-ansible)
+  hosts: iosxe
+  gather_facts: False
+  tags:
+    - ntc-ansible
+  
+  tasks:
 
     - name: Gather "show interface brief" using ntc-ansible module 
       ntc_show_command: #All this parameters are needed by netmiko, can be added in the inventory file as vars

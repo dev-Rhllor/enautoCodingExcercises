@@ -39,12 +39,12 @@ With Python, Scrapli (1.1.a) and Nclient (1.1.b) module:
 - send a read only command using **send_command()** feature of NETMIKO and parse it using NTC-Templates and Pandas DataFrame. 
 - Send a write command using **send_command()** feature of NETMIKO.
 - Configure a loopback interface using **send_config_set**.
-- Configure a loopback interface using **send_config_from_file()**
+- Configure a loopback interface using **send_config_from_file()**.
 
-1.2.b Using Ansible, NETMIKO and ntc-ansible
-- Gather "show interface brief" using ansible **ios_command** module
-- Gather interface information using **ios facts** module (structured data)
-- Gather "show interface brief" using **ntc-ansible** module (structured data)
+1.2.b Using Ansible Network Collection for Cisco IOS devices and ntc-ansible
+- Gather "show interface brief" using ansible **ios_command** module of the Ansible Network Collection for Cisco IOS devices.
+- Gather interface information using **ios facts** module of the Ansible Network Collection for Cisco IOS devices (structured data).
+- Gather "show interface brief" using **ntc-ansible** module (structured data).
 
 NOTE: The ntc-ansible module has to be installed in the system. 
 
