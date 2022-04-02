@@ -13,7 +13,7 @@ netmiko==3.4.0
 ntc-templates==3.0.0
 numpy==1.22.3
 pandas==1.4.1
-paramiko==2.9.2
+paramiko==2.10.1
 pycodestyle==2.8.0
 pycparser==2.21
 pyflakes==2.4.0
